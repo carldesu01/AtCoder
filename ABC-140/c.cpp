@@ -11,15 +11,17 @@ int main()
 	ios_base::sync_with_stdio(false);
 	int n;
 	cin >> n;
-	vector<int> b(n-1);
-	rep(i,n-1) cin >> b[i];
-	vector<int> a(n,pow(10, 5));
-	rep(i,n-1) {
-		a[i] = min(a[i], b[i]);
-		a[i+1] = min(a[i+1], b[i]);
+	vector<int> vec(n-1);
+	rep(i, n-1) cin >> vec[i];
+	vector<int> ans(n, pow(10, 5));
+	rep(i, n-1)
+	{
+		ans[i] = min(vec[i], ans[i]);
+		ans[i+1] = min(ans[i+1], vec[i]);
 	}
-	int ans = 0;
-	rep(i,n) ans += a[i];
-	cout << ans << endl;
+	int sum = 0;
+	rep(i, n) sum += ans[i];
+	cout << sum << endl;
+
 	return 0;
 }
